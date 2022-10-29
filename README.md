@@ -1,4 +1,4 @@
-# music_recommender-ICON
+# playlist_recommender-ICON
 Repository per il caso di studio di Ingegneria della Conoscenza A.A. 2021-2022 - Università degli Studi di Bari Aldo Moro.
 
 ## Studenti
