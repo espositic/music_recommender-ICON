@@ -1,39 +1,31 @@
-import os
 import pandas as pd
 import preprocessing
+import graphics
 import clustering
 import functions
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.preprocessing import StandardScaler
 
+
 def main():
+    graphics.print_logo()
     bol = False
     while True:
-        print("^^^^^^^^^^^^^^^^^^^ MUSIC RECOMMENDER ^^^^^^^^^^^^^^^^^^^\n")
         if bol:
-            string = "Vuoi che ti suggerisca una playlist ? - Premi 1\n" \
-                     + "Vuoi sapere il genere di una canzone? - Premi 2\n" \
-                     + "Vuoi uscire? - Premi 3\n"
+            graphics.print_menu()
 
         else:
-            string = "Ciao benvenuto nel sistema di raccomandazione di playlist spotify\n" + "Vuoi che ti suggerisca una playlist ? - Premi 1\n" \
-                     + "Vuoi sapere il genere di una canzone? - Premi 2\n" \
-                     + "Vuoi uscire? - Premi 3\n"
-        response = input(string)
+            graphics.print_welcome_menu()
+        response = input()
 
         if response == '1':
-            # RECOMMENDER ******************************************************************
 
-            track_name = ''
-            artist_name = ''
-
-            print("Adesso dovrai suggerirmi su quale canzone basare la tua playlist.")
-
-            track_name = input("Suggeriscimi il nome di una traccia che hai apprezzato\n")
-
-            artist_name = input("Suggeriscimi il nome dell'artista che ha scritto la traccia\n")
-
-            nSong = int(input("Quante canzoni vuoi inserire nella tua playlist?\n"))
+            graphics.song_request()
+            track_name = input()
+            graphics.artist_request()
+            artist_name = input()
+            graphics.number_request()
+            n_song = int(input())
 
             data = pd.read_csv('../dataset/spotify_features.csv')
 
@@ -55,11 +47,11 @@ def main():
 
             genres_names = ['genre_A Capella', 'genre_Alternative', 'genre_Anime', 'genre_Blues',
                             "genre_Children's Music", "genre_Children’s Music", 'genre_Classical',
-                             'genre_Comedy', 'genre_Country', 'genre_Dance', 'genre_Electronic',
-                             'genre_Folk', 'genre_Hip-Hop', 'genre_Indie', 'genre_Jazz',
-                             'genre_Movie', 'genre_Opera', 'genre_Pop', 'genre_R&B', 'genre_Rap',
-                             'genre_Reggae', 'genre_Reggaeton', 'genre_Rock', 'genre_Ska',
-                             'genre_Soul', 'genre_Soundtrack', 'genre_World']
+                            'genre_Comedy', 'genre_Country', 'genre_Dance', 'genre_Electronic',
+                            'genre_Folk', 'genre_Hip-Hop', 'genre_Indie', 'genre_Jazz',
+                            'genre_Movie', 'genre_Opera', 'genre_Pop', 'genre_R&B', 'genre_Rap',
+                            'genre_Reggae', 'genre_Reggaeton', 'genre_Rock', 'genre_Ska',
+                            'genre_Soul', 'genre_Soundtrack', 'genre_World']
 
             genres = attributes.groupby(['track_name', 'artist_name'])[genres_names].sum()
 
@@ -79,8 +71,12 @@ def main():
             songs = pd.merge(genres, attributes, how='inner', on=['track_name', "artist_name"])
             songs = songs.drop_duplicates(['track_name', 'artist_name']).reset_index(drop=True)
 
-            DF = clustering.clustering(pd.DataFrame, songs)
-            functions.playlist_song(track_name,artist_name,songs,nSong+1)
+            df = clustering.clustering(pd.DataFrame, songs)
+            functions.playlist_song(track_name, artist_name, songs, n_song + 1)
+
+        elif response == '3':
+            graphics.print_goodbye()
+            break
 
         """elif response == '2':
 
@@ -125,10 +121,8 @@ def main():
             os.system("pause")
             bol = True
             print("\n\n")
+        """
 
-        else:
-            print("Sayonara")
-            break"""
 
 
 if __name__ == '__main__':
