@@ -79,5 +79,3 @@ def decision_tree_classifier(X_train, y_train, X_valid, y_valid):
     DT_AUC = roc_auc_score(y_valid, DT_Predict)
     print("AUC: " + str(DT_AUC))
 
-
-various_classification()

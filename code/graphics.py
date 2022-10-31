@@ -5,7 +5,7 @@ def print_logo():
     print(colored(" _____  _             _ _     _\n"
                   + "|  __ \| |           | (_)   | |\n"
                   + "| |__) | | __ _ _   _| |_ ___| |_\n"
-                  + "|  ___/| |/ _` | | | | | / __| __|     Esposito Matteo\n"
+                  + "|  ___/| |/ _` | | | | | / __| __|     Matteo Esposito\n"
                   + "| |    | | (_| | |_| | | \__ \ |_      Giuseppe Galgano\n"
                   + "|_|___ |_|\__,_|\__, |_|_|___/\__|                       _\n"
                   + "|  __ \          __/ |                                  | |\n"
@@ -18,13 +18,13 @@ def print_logo():
 def print_welcome_menu():
     print(colored("Ciao, benvenuto nel sistema di raccomandazione di Playlist basato sulle canzoni di Spotify!\n"
                   + "Vuoi che ti suggerisca una playlist? - Premi 1\n" \
-                  + "Vuoi sapere il genere di una canzone? - Premi 2\n" \
+                  + "Vuoi sapere se una canzone è popolare? - Premi 2\n" \
                   + "Vuoi uscire? - Premi 3", "green"))
 
 
 def print_menu():
     print(colored("Vuoi che ti suggerisca una playlist? - Premi 1\n" \
-                  + "Vuoi sapere il genere di una canzone? - Premi 2\n" \
+                  + "Vuoi sapere se una canzone è popolare? - Premi 2\n" \
                   + "Vuoi uscire? - Premi 3", "green"))
 
 def print_goodbye():
@@ -42,3 +42,4 @@ def artist_request():
 
 def number_request():
     print(colored("Quante canzoni vuoi inserire nella tua playlist?", "green"))
+
