@@ -1,14 +1,12 @@
 import pandas as pd
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 
 import preprocessing
-from sklearn.preprocessing import OrdinalEncoder
-from sklearn.preprocessing import StandardScaler
 
 
 def rfc_prediction(name_song, name_artist):
@@ -30,7 +28,6 @@ def rfc_prediction(name_song, name_artist):
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
     rfc_model = RandomForestClassifier()
     rfc_model.fit(X_train, y_train)
-
     rfc_predict = rfc_model.predict(row)
     if rfc_predict.all() == 0:
         print("La canzone non é popolare.")
@@ -109,7 +106,6 @@ def dt_prediction(name_song, name_artist):
     dt_model = DecisionTreeClassifier()
     dt_model.fit(X_train, y_train)
     dt_predict = dt_model.predict(row)
-
     if dt_predict.all() == 0:
         print("La canzone non é popolare.")
     else:

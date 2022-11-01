@@ -27,6 +27,7 @@ def print_menu():
                   + "Vuoi sapere se una canzone è popolare? - Premi 2\n" \
                   + "Vuoi uscire? - Premi 3", "green"))
 
+
 def print_goodbye():
     print(colored("Arrivederci!", "green"))
 
@@ -42,4 +43,3 @@ def artist_request():
 
 def number_request():
     print(colored("Quante canzoni vuoi inserire nella tua playlist?", "green"))
-

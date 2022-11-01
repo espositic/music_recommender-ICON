@@ -10,7 +10,7 @@ def playlist_song(name, artist, songs, n_songs=10):
 
     if type(list_songs) != type(None):
 
-        print(colored('Playlist based on "' + str(name) + '" by ' + str(artist), "green"))
+        print(colored('Playlist basata sulla canzone "' + str(name) + '" di ' + str(artist), "green"))
         print()
 
         for i in np.arange(0, len(list_songs)):
