@@ -1,6 +1,4 @@
 import pandas as pd
-import clustering
-import functions
 
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.preprocessing import StandardScaler
