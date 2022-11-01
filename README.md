@@ -5,7 +5,16 @@ Repository per il caso di studio di Ingegneria della Conoscenza A.A. 2021-2022 -
 - Esposito Matteo - 718240
 - Giuseppe Galgano - 717510
 
-## Dataset
-Link: https://www.kaggle.com/datasets/zaheenhamidani/ultimate-spotify-tracks-db.
-Dataset contenente piú di 230.000 tracce prese da Spotify e 26 tipologie di genere musicale.
+## Clonare il progetto 
+<code>git clone https://github.com/espositic/playlist_recommender-ICON.git</code>
 
+## Creare l'ambiente virtuale
+<code>cd playlist_recommender-ICON.git</code>
+<code>python -m venv playlist_recommender-ICON</code>
+
+## Installare le dipendenze:
+<code>pip install -r requirements.txt</code>
+
+## Esecuzione
+<code>cd code</code>
+<code>python main.py</code>
