@@ -79,6 +79,7 @@ def main():
             os.system("pause")
             bol = True
             print("\n")
+
         # Uscita dal sistema
         elif response == '3':
             graphics.print_goodbye()
