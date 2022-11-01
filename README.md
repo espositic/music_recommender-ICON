@@ -10,6 +10,7 @@ Repository per il caso di studio di Ingegneria della Conoscenza A.A. 2021-2022 -
 
 ## Creare l'ambiente virtuale
 <code>cd playlist_recommender-ICON.git</code>
+
 <code>python -m venv playlist_recommender-ICON</code>
 
 ## Installare le dipendenze:
@@ -17,4 +18,5 @@ Repository per il caso di studio di Ingegneria della Conoscenza A.A. 2021-2022 -
 
 ## Esecuzione
 <code>cd code</code>
+
 <code>python main.py</code>
