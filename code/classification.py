@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 
-
+# Stampa i risultati di tutti i tipi di classificatori implementati
 def various_classification():
     dataframe = pd.read_csv('../dataset/spotify_features.csv')
     features = ["acousticness", "danceability", "duration_ms", "energy", "instrumentalness", "key", "liveness",
@@ -30,7 +30,7 @@ def various_classification():
     k_neighbors_classifier(X_train, y_train, X_valid, y_valid)
     decision_tree_classifier(X_train, y_train, X_valid, y_valid)
 
-
+# Logistic Regression
 def logistic_regression(X_train, y_train, X_valid, y_valid):
     LR_Model = LogisticRegression()
     LR_Model.fit(X_train, y_train)
@@ -42,7 +42,7 @@ def logistic_regression(X_train, y_train, X_valid, y_valid):
     LR_AUC = roc_auc_score(y_valid, LR_Predict)
     print("AUC: " + str(LR_AUC))
 
-
+# Random Forest
 def random_forest_classifier(X_train, y_train, X_valid, y_valid):
     RFC_Model = RandomForestClassifier()
     RFC_Model.fit(X_train, y_train)
@@ -54,7 +54,7 @@ def random_forest_classifier(X_train, y_train, X_valid, y_valid):
     RFC_AUC = roc_auc_score(y_valid, RFC_Predict)
     print("AUC: " + str(RFC_AUC))
 
-
+# KNN
 def k_neighbors_classifier(X_train, y_train, X_valid, y_valid):
     KNN_Model = KNeighborsClassifier()
     KNN_Model.fit(X_train, y_train)
@@ -66,7 +66,7 @@ def k_neighbors_classifier(X_train, y_train, X_valid, y_valid):
     KNN_AUC = roc_auc_score(y_valid, KNN_Predict)
     print("AUC: " + str(KNN_AUC))
 
-
+# Decision Tree
 def decision_tree_classifier(X_train, y_train, X_valid, y_valid):
     DT_Model = DecisionTreeClassifier()
     DT_Model.fit(X_train, y_train)

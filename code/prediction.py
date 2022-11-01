@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 
 import preprocessing
 
-
+# Random Forest Classifier
 def rfc_prediction(name_song, name_artist):
     dataframe = pd.read_csv('../dataset/spotify_features.csv')
     dataframe = preprocessing.preprocessing_for_classification(dataframe)
@@ -17,14 +17,11 @@ def rfc_prediction(name_song, name_artist):
 
     row = dataframe.loc[(dataframe['track_name'] == name_song) & (dataframe['artist_name'] == name_artist)]
     row = row.drop(['track_id', 'track_name', 'artist_name', 'loudness', 'genre', 'popularity'], axis=1)
-    print(row)
 
-    # Destiniamo l'80% del dataset per il training set.
     training = dataframe.sample(frac=0.8, random_state=420)
     X_train = training[features]
     y_train = training['popularity']
 
-    # Il restante 20% per il test set.
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
     rfc_model = RandomForestClassifier()
     rfc_model.fit(X_train, y_train)
@@ -34,7 +31,7 @@ def rfc_prediction(name_song, name_artist):
     else:
         print("La canzone é popolare.")
 
-
+# Logistic Regression
 def lr_prediction(name_song, name_artist):
     dataframe = pd.read_csv('../dataset/spotify_features.csv')
     dataframe = preprocessing.preprocessing_for_classification(dataframe)
@@ -44,12 +41,10 @@ def lr_prediction(name_song, name_artist):
     row = dataframe.loc[(dataframe['track_name'] == name_song) & (dataframe['artist_name'] == name_artist)]
     row = row.drop(['track_id', 'track_name', 'artist_name', 'loudness', 'genre', 'popularity'], axis=1)
 
-    # Destiniamo l'80% del dataset per il training set.
     training = dataframe.sample(frac=0.8, random_state=420)
     X_train = training[features]
     y_train = training['popularity']
 
-    # Il restante 20% per il test set.
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
     lr_model = LogisticRegression()
     lr_model.fit(X_train, y_train)
@@ -59,7 +54,7 @@ def lr_prediction(name_song, name_artist):
     else:
         print("La canzone é popolare.")
 
-
+# KNN
 def knn_prediction(name_song, name_artist):
     dataframe = pd.read_csv('../dataset/spotify_features.csv')
     dataframe = preprocessing.preprocessing_for_classification(dataframe)
@@ -69,12 +64,10 @@ def knn_prediction(name_song, name_artist):
     row = dataframe.loc[(dataframe['track_name'] == name_song) & (dataframe['artist_name'] == name_artist)]
     row = row.drop(['track_id', 'track_name', 'artist_name', 'loudness', 'genre', 'popularity'], axis=1)
 
-    # Destiniamo l'80% del dataset per il training set.
     training = dataframe.sample(frac=0.8, random_state=420)
     X_train = training[features]
     y_train = training['popularity']
 
-    # Il restante 20% per il test set.
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
 
     knn_model = KNeighborsClassifier()
@@ -85,7 +78,7 @@ def knn_prediction(name_song, name_artist):
     else:
         print("La canzone é popolare.")
 
-
+# Decision Tree
 def dt_prediction(name_song, name_artist):
     dataframe = pd.read_csv('../dataset/spotify_features.csv')
     dataframe = preprocessing.preprocessing_for_classification(dataframe)
@@ -95,12 +88,10 @@ def dt_prediction(name_song, name_artist):
     row = dataframe.loc[(dataframe['track_name'] == name_song) & (dataframe['artist_name'] == name_artist)]
     row = row.drop(['track_id', 'track_name', 'artist_name', 'loudness', 'genre', 'popularity'], axis=1)
 
-    # Destiniamo l'80% del dataset per il training set.
     training = dataframe.sample(frac=0.8, random_state=420)
     X_train = training[features]
     y_train = training['popularity']
 
-    # Il restante 20% per il test set.
     X_train, X_valid, y_train, y_valid = train_test_split(X_train, y_train, test_size=0.2, random_state=420)
 
     dt_model = DecisionTreeClassifier()
@@ -111,8 +102,3 @@ def dt_prediction(name_song, name_artist):
     else:
         print("La canzone é popolare.")
 
-
-rfc_prediction("C'est beau de faire un Show", 'Henri Salvador')
-lr_prediction("C'est beau de faire un Show", 'Henri Salvador')
-knn_prediction("C'est beau de faire un Show", 'Henri Salvador')
-dt_prediction("C'est beau de faire un Show", 'Henri Salvador')

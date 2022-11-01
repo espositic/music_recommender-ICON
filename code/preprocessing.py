@@ -30,14 +30,14 @@ def preprocessing_for_classification(dataframe):
 
 
 def preprocessing_for_clustering(data):
-    """Rimuoviamo le feature "key" e "time_signature",
-    e trasferiamo track_name e artist_name in un'altra tabella."""
+    # Rimuoviamo le feature "key" e "time_signature",
+    # e trasferiamo track_name e artist_name in un'altra tabella.
     indx = data[['track_name', 'artist_name']]
     attributes = data.drop(['track_id', 'time_signature', 'track_name', 'artist_name', 'key'], axis=1)
 
-    """Trasformiamo i valori genre e mode in valori binari,
-    aggiungendo ogni tipologia di genere alle feature, in modo
-    che ogni canzone abbia 1 al proprio genere."""
+    # Trasformiamo i valori genre e mode in valori binari,
+    # aggiungendo ogni tipologia di genere alle feature, in modo
+    # che ogni canzone abbia 1 al proprio genere.
     ordinal_encoder = OrdinalEncoder()
     object_cols = ['mode']
     attributes[object_cols] = ordinal_encoder.fit_transform(attributes[object_cols])
