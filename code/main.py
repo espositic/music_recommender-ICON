@@ -42,9 +42,8 @@ def main():
 
         # Prediction della popolarità di una canzone
         elif response == '2':
-            print("Ti chiedero' un po' di cose. Inziamo...")
             # richiesta nome canzone
-            graphics.song_request()
+            graphics.song_request_for_prediction()
             name = input()
             # richiesta nome artista
             graphics.artist_request()
@@ -55,25 +54,33 @@ def main():
             row = data.loc[(data['track_name'] == name) & (data['artist_name'] == artist)]
             # Controllo dell'esistenza della canzone nel dataset
             if row.empty:
-                print("Nessuna canzone trovata nel dataset!")
+                graphics.no_song_matched()
             else:
-                print("Canzone trovata nel dataset!")
+                graphics.song_mathced()
                 # Scelta del classificatore
-                print("Quale classificatore vuoi utilizzare?\n"
-                        + "Random Forest - Premi 1\n" \
-                        + "KNN - Premi 2\n" \
-                        + "Decision Tree - Premi 3\n" \
-                        + "Logistic Regression - Premi 4\n")
+                graphics.choose_classifier()
                 scelta = int(input())
                 match scelta:
                     case 1:
-                        prediction.rfc_prediction(name, artist)
+                        if prediction.rfc_prediction(name, artist) == 0:
+                            graphics.song_not_popular()
+                        else:
+                            graphics.song_is_popular()
                     case 2:
-                        prediction.knn_prediction(name, artist)
+                        if prediction.knn_prediction(name, artist) == 0:
+                            graphics.song_not_popular()
+                        else:
+                            graphics.song_is_popular()
                     case 3:
-                        prediction.dt_prediction(name, artist)
+                        if prediction.dt_prediction(name, artist) == 0:
+                            graphics.song_not_popular()
+                        else:
+                            graphics.song_is_popular()
                     case 4:
-                        prediction.lr_prediction(name, artist)
+                        if prediction.lr_prediction(name, artist) == 0:
+                            graphics.song_not_popular()
+                        else:
+                            graphics.song_is_popular()
 
             print("\n")
             os.system("pause")

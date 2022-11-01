@@ -26,10 +26,7 @@ def rfc_prediction(name_song, name_artist):
     rfc_model = RandomForestClassifier()
     rfc_model.fit(X_train, y_train)
     rfc_predict = rfc_model.predict(row)
-    if rfc_predict.all() == 0:
-        print("La canzone non é popolare.")
-    else:
-        print("La canzone é popolare.")
+    return rfc_predict.all()
 
 # Logistic Regression
 def lr_prediction(name_song, name_artist):
@@ -49,10 +46,7 @@ def lr_prediction(name_song, name_artist):
     lr_model = LogisticRegression()
     lr_model.fit(X_train, y_train)
     lr_predict = lr_model.predict(row)
-    if lr_predict.all() == 0:
-        print("La canzone non é popolare.")
-    else:
-        print("La canzone é popolare.")
+    return lr_predict.all()
 
 # KNN
 def knn_prediction(name_song, name_artist):
@@ -73,10 +67,7 @@ def knn_prediction(name_song, name_artist):
     knn_model = KNeighborsClassifier()
     knn_model.fit(X_train, y_train)
     knn_predict = knn_model.predict(row)
-    if knn_predict.all() == 0:
-        print("La canzone non é popolare.")
-    else:
-        print("La canzone é popolare.")
+    return knn_predict.all()
 
 # Decision Tree
 def dt_prediction(name_song, name_artist):
@@ -97,8 +88,5 @@ def dt_prediction(name_song, name_artist):
     dt_model = DecisionTreeClassifier()
     dt_model.fit(X_train, y_train)
     dt_predict = dt_model.predict(row)
-    if dt_predict.all() == 0:
-        print("La canzone non é popolare.")
-    else:
-        print("La canzone é popolare.")
+    return dt_predict.all()
 

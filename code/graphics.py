@@ -37,9 +37,38 @@ def song_request():
                   + "Qual'é il nome di una traccia che hai apprezzato?", "green"))
 
 
+def song_request_for_prediction():
+    print(colored("Adesso dovrai suggerirmi la canzone su cui predire la popolaritá!\n" \
+                  + "Qual'é il nome della traccia?", "green"))
+
+
 def artist_request():
     print(colored("Adesso dimmi il nome dell'artista che ha scritto la traccia.", "green"))
 
 
 def number_request():
     print(colored("Quante canzoni vuoi inserire nella tua playlist?", "green"))
+
+
+def no_song_matched():
+    print(colored("Nessuna canzone trovata nel dataset!", "green"))
+
+
+def song_mathced():
+    print(colored("Canzone trovata nel dataset!", "green"))
+
+
+def choose_classifier():
+    print(colored("Quale classificatore vuoi utilizzare?\n"
+                  + "Random Forest Classifier - Premi 1\n" \
+                  + "K-Nearest Neighbors Classifier - Premi 2\n" \
+                  + "Decision Tree Classifier - Premi 3\n" \
+                  + "Logistic Regression - Premi 4\n", "green"))
+
+
+def song_is_popular():
+    print(colored("La canzone é popolare!", "green"))
+
+
+def song_not_popular():
+    print(colored("La canzone é popolare!", "green"))
